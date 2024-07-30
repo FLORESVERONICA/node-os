@@ -1,14 +1,14 @@
-const os = require('node:os')
+const os = require ('node:os');
 
-const obtenerInformacionOS = () => {
-    return {
-        Nombre: os.hostname(),
-        Tipo: os.type(),
-        Version: os.version(),
-        Aquitectura: os.arch() ,
-        CPUs: os.cpus().length,
-        MemoriaTotal: `${(os.totalmem() / 1024 / 1024).toFixed} MB`,
-        MemoriaLibre:  `${(os.freemem() / 1024 / 1024).toFixed} MB` 
-    }
+function obtenerinformacion() {
+    const info = {
+        nombre: os.type(),
+        version: os.release(),
+        arquitectura: os.arch(),
+        numCPU: os.cpus().length,
+        memoriatotal: Math.round(os.totalmem() / (1024 * 1024)),
+        memorialibre: Math.round(os.freemem() / (1024 * 1024))
+    };
+    return info;
 }
-console.log(obtenerInformacionOS)
+ module.exports = obtenerinformacion;
